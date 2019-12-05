@@ -9,9 +9,10 @@ server.use(helmet());
 server.use(express.json());
 
 server.get('/', (req, res) => {
+  const message=process.env.MSG||"Hello Walls"
   Shoutouts.find()
   .then(shoutouts => {
-    res.status(200).json(shoutouts);
+    res.status(200).json(message, shoutouts);
   })
   .catch (error => {
     console.error('\nERROR', error);
@@ -22,7 +23,7 @@ server.get('/', (req, res) => {
 server.post('/', (req, res) => {
   Shoutouts.add(req.body)
   .then(shoutout => {
-    res.status(201).json('Hello Wirld',shoutout);
+    res.status(201).json(shoutout);
   })
   .catch (error => {
     console.error('\nERROR', error);
