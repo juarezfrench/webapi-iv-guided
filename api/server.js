@@ -22,7 +22,7 @@ server.get('/', (req, res) => {
 server.post('/', (req, res) => {
   Shoutouts.add(req.body)
   .then(shoutout => {
-    res.status(201).json(shoutout);
+    res.status(201).json('Hello Wirld',shoutout);
   })
   .catch (error => {
     console.error('\nERROR', error);
